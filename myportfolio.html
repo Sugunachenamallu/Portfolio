@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suguna Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #5f9ea0, #87ceeb);
+      color: #2d2d2d;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: 0.3s;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #fff;
+      color: #5f9ea0;
+    }
+
+    /* Intro Section */
+    .intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 10%;
+      min-height: 90vh;
+    }
+    .intro-text {
+      max-width: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      text-align: left;
+    }
+    .intro-text h1 {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      color: #1e3d59;
+    }
+    .intro-text p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #333;
+    }
+    /* Resume Button */
+    .resume-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1e3d59, #5f9ea0);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .resume-btn:hover {
+      background: linear-gradient(135deg, #5f9ea0, #1e3d59);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .intro img {
+      width: 300px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+      transition: transform 0.4s;
+    }
+    .intro img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Section Titles */
+    section {
+      padding: 80px 10%;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      margin: 30px auto;
+      max-width: 1200px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #1e3d59;
+    }
+
+    /* About */
+    .about-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 50px;
+    }
+    .about-text {
+      flex: 1;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #333;
+      text-align: left;
+    }
+    .about-facts {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .fact {
+      background: rgba(255,255,255,0.9);
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .fact b {
+      display: block;
+      margin-bottom: 5px;
+      color: #1e3d59;
+    }
+
+    /* Education */
+    .edu-item {
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .edu-item:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .edu-item h3 {
+      color: #1e3d59;
+      margin-bottom: 5px;
+    }
+
+    /* Skills & Certificates */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .skill-card {
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .skill-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .skill-card h3 {
+      margin-bottom: 10px;
+      color: #1e3d59;
+    }
+    .skill-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #1e3d59;
+      text-decoration: none;
+      border: 1px solid #1e3d59;
+      padding: 5px 12px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .skill-card a:hover {
+      background: #1e3d59;
+      color: #fff;
+    }
+        /* Coding Profiles */
+    .profiles-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .profile-card {
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .profile-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .profile-card h3 {
+      margin-bottom: 10px;
+      color: #1e3d59;
+    }
+    .profile-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #1e3d59;
+      text-decoration: none;
+      border: 1px solid #1e3d59;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    .profile-card a:hover {
+      background: #1e3d59;
+      color: #fff;
+    }
+
+
+    /* Experience */
+    .experience-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .exp-card {
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .exp-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .exp-card h3 {
+      margin-bottom: 10px;
+      color: #1e3d59;
+    }
+    .exp-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #1e3d59;
+      text-decoration: none;
+      border: 1px solid #1e3d59;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    .exp-card a:hover {
+      background: #1e3d59;
+      color: #fff;
+    }
+
+    /* Projects Timeline */
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      background: #1e3d59;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    .timeline-item {
+      padding: 20px;
+      position: relative;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      width: 45%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timeline-item:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .timeline-item.left { left: 0; }
+    .timeline-item.right { left: 55%; }
+    .timeline-item h3 {
+      margin-top: 0;
+      color: #1e3d59;
+    }
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      width: 15px;
+      height: 15px;
+      background: #1e3d59;
+      border-radius: 50%;
+      left: -8px;
+    }
+    .timeline-item.right::after {
+      left: auto;
+      right: -8px;
+    }
+
+    /* Footer */
+         /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1e3d59, #5f9ea0);
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+    }
+    footer h2 {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+    .footer-links {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .footer-links a {
+      background: rgba(255,255,255,0.15);
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .footer-links a:hover {
+      background: #fff;
+      color: #1e3d59;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    .footer-note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    .back-to-top {
+      display: inline-block;
+      margin-top: 15px;
+      background: #fff;
+      color: #1e3d59;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .back-to-top:hover {
+      background: #5f9ea0;
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .intro-text {
+        max-width: 100%;
+        text-align: center;
+      }
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-text {
+        text-align: center;
+      }
+      .timeline::after { left: 20px; }
+      .timeline-item {
+        width: 100%;
+        left: 40px !important;
+        margin-bottom: 30px;
+      }
+      .timeline-item.right::after {
+        left: -8px;
+        right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Suguna</div>
+    <ul>
+      <li><a href="#intro" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#profiles">Profiles</a></li>
+
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#Contact">Contact</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- Intro -->
+  <section class="intro" id="intro">
+    <div class="intro-text">
+      <h1>👋 Hi, I'm Chenamallu Suguna</h1>
+      <p>Full Stack Developer Trainee | AI & ML Enthusiast<br>
+         Passionate about building web applications and solving real-world problems.</p>
+      <!-- Resume Download Button -->
+      <a href="C:\Users\SUGUNA\Downloads\Chenamallu Suguna Resume.pdf" download class="resume-btn">Download Resume</a>
+    </div>
+    <img src="C:/Users/SUGUNA/Desktop/mythubpic.jpg" alt="Profile">
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <p>
+          I am a Computer Science student specializing in AI & ML and a Full Stack Developer Trainee. 
+          With experience in Java, Python, JavaScript.I like problem solving and creating innovative projects.  
+        </p>
+      </div>
+      <div class="about-facts">
+        <div class="fact">
+          <b>📚 Education</b>
+          <span>B.Tech — Computer Science</span>
+        </div>
+        <div class="fact">
+          <b>💻 Tech</b>
+          <span>Java | Python | JavaScript | React | Node</span>
+        </div>
+        <div class="fact">
+          <b>🔭 Interests</b>
+          <span>AI/ML, Web Apps, UX</span>
+        </div>
+        <div class="fact">
+          <b>📍 Location</b>
+          <span>India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-item">
+      <h3>Bachelor of Technology in Computer Science</h3>
+      <p>Aditya College of Engineering and Technology|Surampalem,Kakinada,AndhraPradesh | 2023-2027</p>
+      <p>CGPA:9.31</p>
+    </div>
+    <div class="edu-item">
+      <h3>Intermediate (MPC)</h3>
+      <p>Sri Laxmi Ganapathi Junior College|Vizianagaram,AndhraPradesh | 2021 - 2023</p>
+      <p>percentage:97.7%,(977/1000)</p>
+    </div>
+    <div class="edu-item">
+      <h3>SSC</h3>
+      <p>Ap.Model School|Sathivada,Vizianagaram(dist),AndhraPradesh(state) | 2020 - 2021</p>
+      <p>percentage:97.5%,(585/600)</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills & Certificates</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>HTML</h3>
+        <p>Web Development Basics</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\htmlessensitalsdr.pdf">View Certificate</a>
+      </div>
+      <div class="skill-card">
+        <h3>CSS</h3>
+        <p>Web Styling Basics</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\CSSEssentialscisco.pdf">View Certificate</a>
+      </div>
+      <div class="skill-card">
+        <h3>JavaScript</h3>
+        <p>Interactive Web Pages</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\jsEssential1.pdf">View Certificate</a>
+      </div>
+      <div class="skill-card">
+        <h3>Python</h3>
+        <p>Problem Solving</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\ciscopythonessentials.pdf">View Certificate</a>
+      </div>
+      <div class="skill-card">
+        <h3>Java</h3>
+        <p>Problem Solving</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\oraclejavacertificate.pdf">View Certificate</a>
+      </div>
+      <div class="skill-card">
+        <h3>C Programming</h3>
+        <p>Problem Solving</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\cprogrammingcertificate.pdf">View Certificate</a>
+      </div>
+    </div>
+  </section>
+    <!-- Coding Profiles -->
+  <section id="profiles">
+    <h2>Coding & Professional Links</h2>
+    <div class="profiles-container">
+      <div class="profile-card">
+        <h3>💡 LeetCode</h3>
+        <p>Solve DSA problems and improve competitive programming skills.</p>
+        <a href="https://leetcode.com/u/sugunachenamallu/" target="_blank">View Profile</a>
+      </div>
+      <div class="profile-card">
+        <h3>🏆 HackerRank</h3>
+        <p>Certified in Python, Java, SQL, and problem-solving challenges.</p>
+        <a href="https://www.hackerrank.com/profile/sugunachenamall1" target="_blank">View Profile</a>
+      </div>
+      <div class="profile-card">
+        <h3>⚡ CodeChef</h3>
+        <p>Competitive programming with global contests and problem sets.</p>
+        <a href="https://www.codechef.com/users/sugunachenamal" target="_blank">View Profile</a>
+      </div>
+      <div class="profile-card">
+        <h3>🌐 GitHub</h3>
+        <p>Explore my open-source contributions and project repositories.</p>
+        <a href="https://github.com/Sugunachenamallu" target="_blank">View Profile</a>
+      </div>
+      <div class="profile-card">
+        <h3>📘 GeeksforGeeks</h3>
+        <p>Articles, practice problems, and DSA progress tracking.</p>
+        <a href="https://www.geeksforgeeks.org/user/sugunachenm2wh/" target="_blank">View Profile</a>
+      </div>
+            <div class="profile-card">
+        <h3>💼 LinkedIn</h3>
+        <p>Connect with me professionally and explore my achievements.</p>
+        <a href="https://www.linkedin.com/in/suguna-chenamallu-7205b0298/" target="_blank">View Profile</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-container">
+      <div class="exp-card">
+        <h3>Internship</h3>
+        <p><b>Company:</b>Technical Hub</p>
+        <p><b>Role:</b> Full Stack Development with React Native</p>
+        <p><b>Duration:</b> 01-05-2025 to 1-07-2025</p>
+        <a href="C:\Users\SUGUNA\Desktop\certificates\certifys\internshipcertificate.pdf" target="_blank">View Internship Certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <h3>Career Path Explorer</h3>
+        <p>Career Path Explorer is an interactive web tool that helps students discover suitable career paths based on their interests and skills. It provides personalized suggestions with detailed information on required skills, learning resources, and future opportunities.</p>
+      </div>
+      <div class="timeline-item right">
+        <h3>Flash Master</h3>
+        
+        <p> Flash Master is an interactive web-based revision platform designed for students to practice and revise concepts effectively. It uses digital flashcards to cover topics like aptitude, reasoning, programming, and core CS subjects. Features include topic-wise question sets...</p>
+        <a href="https://github.com/Sugunachenamallu/FlashMaster" target="_blank">GitHub</a>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+      <!-- Footer -->
+  <footer id="Contact">
+  <h2>📬 Let's Connect</h2>
+  <p>I'm always open to collaborations, learning opportunities, and innovative ideas.</p>
+  <div class="footer-links">
+    <a href="mailto:sugunachenamallu.29@gmail.com">📧 Email</a>
+    <a href="https://www.linkedin.com/in/suguna-chenamallu-7205b0298/" target="_blank">💼 LinkedIn</a>
+    <a href="https://github.com/Sugunachenamallu" target="_blank">🌐 GitHub</a>
+    <a href="https://leetcode.com/u/sugunachenamallu/" target="_blank">💡 LeetCode</a>
+    <a href="https://www.hackerrank.com/profile/sugunachenamall1" target="_blank">🏆 HackerRank</a>
+  </div>
+  <p class="footer-note">© 2025 Suguna | Crafted with ❤️ & Code</p>
+  <a href="#intro" class="back-to-top">⬆ Back to Top</a>
+</footer>
+
+
+
+  <!-- Scroll Active Menu Script -->
+  <script>
+  const sections = document.querySelectorAll("section, footer");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120; // offset to trigger earlier
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    // ✅ Special case: If scrolled near bottom, set current = Contact
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      current = "Contact";
+    }
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
